@@ -21,8 +21,8 @@ model_name_or_model_dir="iic/SenseVoiceSmall"
 
 
 # data dir, which contains: train.json, val.json
-train_data=${workspace}/data/train_example.jsonl
-val_data=${workspace}/data/val_example.jsonl
+train_data=${workspace}/train_data/data/train_data.jsonl
+val_data=${workspace}/train_data/data/valid_data.jsonl
 
 # exp output dir
 output_dir="./outputs"
@@ -43,6 +43,9 @@ DISTRIBUTED_ARGS="
 
 echo $DISTRIBUTED_ARGS
 
+# Set PYTHONPATH for FunASR
+export PYTHONPATH="${workspace}/FunASR:$PYTHONPATH"
+
 # funasr trainer path
 train_tool="$(pwd)/FunASR/funasr/bin/train_ds.py"
 echo "Using funasr trainer: ${train_tool}"
@@ -59,13 +62,13 @@ ${train_tool} \
 ++dataset_conf.sort_size=1024 \
 ++dataset_conf.batch_type="token" \
 ++dataset_conf.num_workers=4 \
-++train_conf.max_epoch=50 \
+++train_conf.max_epoch=10 \
 ++train_conf.log_interval=1 \
-++train_conf.resume=true \
+++train_conf.resume=false \
 ++train_conf.validate_interval=2000 \
 ++train_conf.save_checkpoint_interval=2000 \
-++train_conf.keep_nbest_models=20 \
-++train_conf.avg_nbest_model=10 \
+++train_conf.keep_nbest_models=10 \
+++train_conf.avg_nbest_model=5 \
 ++train_conf.use_deepspeed=false \
 ++train_conf.deepspeed_config=${deepspeed_config} \
 ++optim_conf.lr=0.0002 \
