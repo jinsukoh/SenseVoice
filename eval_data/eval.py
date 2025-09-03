@@ -67,7 +67,7 @@ def evaluate_models():
         latest_dir = max(finetuned_dirs)
         print(f"Found latest finetuned directory: {latest_dir}")
         model_paths = [
-            f"{latest_dir}/model..pt",
+            f"{latest_dir}/model.pt",
         ]
         import re
         checkpoint_files = glob.glob(f"{latest_dir}/model.pt.ep*")
@@ -90,15 +90,22 @@ def evaluate_models():
             try:
                 print(f"Loading model from: {finetuned_path}")
                 state = torch.load(finetuned_path, map_location=device)
-                finetuned_model.model.load_state_dict(state['model_state_dict'])
-                loaded_model = finetuned_path
-                if 'training_stats' in state:
-                    stats = state['training_stats']
-                    print(f"  - Steps: {stats.get('step', 'N/A')}")
-                    print(f"  - Samples: {stats.get('total_samples', 'N/A')}")
-                    if 'losses' in stats and len(stats['losses']) > 0:
-                        print(f"  - Final loss: {stats['losses'][-1]:.4f}")
-                break
+                if isinstance(state, dict) and 'model_state_dict' in state:
+                    finetuned_model.model.load_state_dict(state['model_state_dict'])
+                    loaded_model = finetuned_path
+                    if 'training_stats' in state:
+                        stats = state['training_stats']
+                        print(f"  - Steps: {stats.get('step', 'N/A')}")
+                        print(f"  - Samples: {stats.get('total_samples', 'N/A')}")
+                        if 'losses' in stats and len(stats['losses']) > 0:
+                            print(f"  - Final loss: {stats['losses'][-1]:.4f}")
+                    break
+                else:
+                    # state_dict가 아니라 전체 모델이 저장된 경우
+                    finetuned_model.model = state
+                    loaded_model = finetuned_path
+                    print("  - Loaded entire model object (not state_dict)")
+                    break
             except Exception as e:
                 print(f"Failed to load {finetuned_path}: {e}")
                 continue
@@ -108,9 +115,11 @@ def evaluate_models():
     print(f"Successfully loaded: {loaded_model}")
 
     base_model.model.to(device)
-    finetuned_model.model.to(device)
     base_model.model.eval()
-    finetuned_model.model.eval()
+    # finetuned_model.model이 dict(전체 객체)로 대체된 경우 .to/.eval() 호출하지 않음
+    if hasattr(finetuned_model.model, 'to') and hasattr(finetuned_model.model, 'eval'):
+        finetuned_model.model.to(device)
+        finetuned_model.model.eval()
 
     import re
     def extract_pure_text(val):
