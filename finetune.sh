@@ -62,7 +62,7 @@ ${train_tool} \
 ++dataset_conf.sort_size=1024 \
 ++dataset_conf.batch_type="token" \
 ++dataset_conf.num_workers=4 \
-++train_conf.max_epoch=10 \
+++train_conf.max_epoch=100 \
 ++train_conf.log_interval=1 \
 ++train_conf.resume=false \
 ++train_conf.validate_interval=2000 \
