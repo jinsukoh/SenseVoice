@@ -102,10 +102,15 @@ def evaluate_models():
                     break
                 else:
                     # state_dict가 아니라 전체 모델이 저장된 경우
-                    finetuned_model.model = state
-                    loaded_model = finetuned_path
-                    print("  - Loaded entire model object (not state_dict)")
-                    break
+                    # dict가 아닌 실제 모델 객체인지 확인
+                    if hasattr(state, 'eval') and hasattr(state, 'to'):
+                        finetuned_model.model = state
+                        loaded_model = finetuned_path
+                        print("  - Loaded entire model object (not state_dict)")
+                        break
+                    else:
+                        print(f"  - Invalid model format in {finetuned_path}")
+                        continue
             except Exception as e:
                 print(f"Failed to load {finetuned_path}: {e}")
                 continue
