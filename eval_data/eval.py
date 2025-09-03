@@ -90,8 +90,8 @@ def evaluate_models():
             try:
                 print(f"Loading model from: {finetuned_path}")
                 state = torch.load(finetuned_path, map_location=device)
-                if isinstance(state, dict) and 'model_state_dict' in state:
-                    finetuned_model.model.load_state_dict(state['model_state_dict'])
+                if isinstance(state, dict) and 'state_dict' in state:
+                    finetuned_model.model.load_state_dict(state['state_dict'])
                     loaded_model = finetuned_path
                     if 'training_stats' in state:
                         stats = state['training_stats']
