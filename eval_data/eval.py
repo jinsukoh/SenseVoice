@@ -69,9 +69,14 @@ def evaluate_models():
         model_paths = [
             f"{latest_dir}/model..pt",
         ]
+        import re
         checkpoint_files = glob.glob(f"{latest_dir}/model.pt.ep*")
+        def extract_epoch(filename):
+            match = re.search(r'ep(\d+)', filename)
+            return int(match.group(1)) if match else -1
+        checkpoint_files = [f for f in checkpoint_files if extract_epoch(f) != -1]
         if checkpoint_files:
-            checkpoint_files.sort(key=lambda x: int(x.split('_')[-1].split('.')[0]), reverse=True)
+            checkpoint_files.sort(key=extract_epoch, reverse=True)
             model_paths.extend(checkpoint_files)
     else:
         print("No finetuned directories found in ./outputs/, falling back to old path")
