@@ -62,22 +62,22 @@ def evaluate_models():
 
     # 학습된 모델 준비 (최적 모델 사용)
     finetuned_model = AutoModel(model="iic/SenseVoiceSmall", disable_update=True)
-    finetuned_dirs = glob.glob("../out/finetuned_*")
+    finetuned_dirs = glob.glob("../outputs")
     if finetuned_dirs:
         latest_dir = max(finetuned_dirs)
         print(f"Found latest finetuned directory: {latest_dir}")
         model_paths = [
-            f"{latest_dir}/sensevoice_finetuned_final.pt",
+            f"{latest_dir}/model..pt",
         ]
-        checkpoint_files = glob.glob(f"{latest_dir}/checkpoint_step_*.pt")
+        checkpoint_files = glob.glob(f"{latest_dir}/model.pt.ep*")
         if checkpoint_files:
             checkpoint_files.sort(key=lambda x: int(x.split('_')[-1].split('.')[0]), reverse=True)
             model_paths.extend(checkpoint_files)
     else:
-        print("No finetuned directories found in ./out/, falling back to old path")
+        print("No finetuned directories found in ./outputs/, falling back to old path")
         model_paths = [
-            "../finetuned_sensevoice_full/sensevoice_finetuned_final.pt",
-            "../finetuned_sensevoice_full/checkpoint_step_2500.pt"
+            "../outputs/model.pt",
+            "../outputs/model.pt.best"
         ]
     loaded_model = None
     for finetuned_path in model_paths:
