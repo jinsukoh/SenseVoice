@@ -4,8 +4,9 @@
 workspace=`pwd`
 
 # which gpu to train or finetune
-export CUDA_VISIBLE_DEVICES="0,1"
-gpu_num=$(echo $CUDA_VISIBLE_DEVICES | awk -F "," '{print NF}')
+export CUDA_VISIBLE_DEVICES="0"
+#gpu_num=$(echo $CUDA_VISIBLE_DEVICES | awk -F "," '{print NF}')
+gpu_num=1
 
 # model_name from model_hub, or model_dir in local path
 
@@ -43,16 +44,7 @@ DISTRIBUTED_ARGS="
 echo $DISTRIBUTED_ARGS
 
 # funasr trainer path
-if [ -f `dirname $(which funasr)`/train_ds.py ]; then
-    train_tool=`dirname $(which funasr)`/train_ds.py
-elif [ -f `dirname $(which funasr)`/../lib/python*/site-packages/funasr/bin/train_ds.py ]; then
-    train_tool=`dirname $(which funasr)`/../lib/python*/site-packages/funasr/bin/train_ds.py
-else
-    echo "Error: train_ds.py not found in funasr bin directory."
-    exit 1
-fi
-ABSOLUTE_PATH=$(cd $(dirname $train_tool); pwd)
-train_tool=${ABSOLUTE_PATH}/train_ds.py
+train_tool="$(pwd)/FunASR/funasr/bin/train_ds.py"
 echo "Using funasr trainer: ${train_tool}"
 
 torchrun $DISTRIBUTED_ARGS \
