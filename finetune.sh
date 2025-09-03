@@ -21,8 +21,8 @@ model_name_or_model_dir="iic/SenseVoiceSmall"
 
 
 # data dir, which contains: train.json, val.json
-train_data=${workspace}/train_data/data/train_data.jsonl
-val_data=${workspace}/train_data/data/valid_data.jsonl
+train_data=${workspace}/train_data/data-augmented/train_data.jsonl  
+val_data=${workspace}/train_data/data-augmented/valid_data.jsonl
 
 # exp output dir
 output_dir="./outputs"
@@ -64,11 +64,11 @@ ${train_tool} \
 ++dataset_conf.num_workers=4 \
 ++train_conf.max_epoch=100 \
 ++train_conf.log_interval=1 \
-++train_conf.resume=false \
+++train_conf.resume=true \
 ++train_conf.validate_interval=2000 \
 ++train_conf.save_checkpoint_interval=2000 \
-++train_conf.keep_nbest_models=10 \
-++train_conf.avg_nbest_model=5 \
+++train_conf.keep_nbest_models=20 \
+++train_conf.avg_nbest_model=10 \
 ++train_conf.use_deepspeed=false \
 ++train_conf.deepspeed_config=${deepspeed_config} \
 ++optim_conf.lr=0.0002 \
