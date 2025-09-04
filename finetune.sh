@@ -75,5 +75,9 @@ ${train_tool} \
 ++train_conf.patience=3 \
 ++optim_conf.lr=0.00008 \
 ++optim_conf.weight_decay=0.01 \
+++train_conf.log_level="DEBUG" \
+++dataset_conf.debug=true \
+++train_conf.print_model=true \
+++train_conf.print_train_info=true \
 ++output_dir="${output_dir}" &> ${log_file}
 
