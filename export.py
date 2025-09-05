@@ -12,8 +12,11 @@ from funasr.utils.postprocess_utils import rich_transcription_postprocess
 
 quantize = False
 
-model_dir = "iic/SenseVoiceSmall"
+#model_dir = "iic/SenseVoiceSmall"
+model_dir = "outputs"
 model, kwargs = SenseVoiceSmall.from_pretrained(model=model_dir, device="cuda:0")
+
+print("model kwargs:", kwargs)
 
 rebuilt_model = model.export(type="onnx", quantize=False)
 model_path = kwargs.get("output_dir", os.path.dirname(kwargs.get("init_param")))
@@ -40,7 +43,8 @@ except:
     tokenizer = None
 
 # inference
-wav_or_scp = "/Users/shixian/Downloads/asr_example_hotword.wav"
+#wav_or_scp = "/Users/shixian/Downloads/asr_example_hotword.wav"
+wav_or_scp = "/giant-data/user/1112307/finetune/SenseVoice/train_data/data/sample_00000.wav"
 language_list = [0]
 textnorm_list = [15]
 res = model_bin(wav_or_scp, language_list, textnorm_list, tokenizer=tokenizer)

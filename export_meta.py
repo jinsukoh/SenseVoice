@@ -29,6 +29,7 @@ def export_forward(
 ):
     # speech = speech.to(device="cuda")
     # speech_lengths = speech_lengths.to(device="cuda")
+    self.to(speech.device)
     language_query = self.embed(language.to(speech.device)).unsqueeze(1)
     textnorm_query = self.embed(textnorm.to(speech.device)).unsqueeze(1)
     print(textnorm_query.shape, speech.shape)
