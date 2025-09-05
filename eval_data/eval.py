@@ -60,64 +60,50 @@ def evaluate_models():
                 else:
                     print(f"[WARNING] No audio file found for index: {idx}")
 
-    # 학습된 모델 준비 (최적 모델 사용)
+    # 학습된 모델 준비 (fp16/fp32 자동 감지, state_dict/전체 객체 모두 지원, 하위 dict 자동 탐색)
     finetuned_model = AutoModel(model="iic/SenseVoiceSmall", disable_update=True)
-    finetuned_dirs = glob.glob("../outputs")
-    if finetuned_dirs:
-        latest_dir = max(finetuned_dirs)
-        print(f"Found latest finetuned directory: {latest_dir}")
-        model_paths = [
-            f"{latest_dir}/model.pt",
-        ]
-        import re
-        checkpoint_files = glob.glob(f"{latest_dir}/model.pt.ep*")
-        def extract_epoch(filename):
-            match = re.search(r'ep(\d+)', filename)
-            return int(match.group(1)) if match else -1
-        checkpoint_files = [f for f in checkpoint_files if extract_epoch(f) != -1]
-        if checkpoint_files:
-            checkpoint_files.sort(key=extract_epoch, reverse=True)
-            model_paths.extend(checkpoint_files)
+    #fp16_path = "../compressed/model_fp16.pt"
+    fp16_path = "../outputs/model.pt"
+    if os.path.exists(fp16_path):
+        print(f"Loading model from: {fp16_path}")
+        state = torch.load(fp16_path, map_location=device)
+        # 하위 dict 자동 탐색
+        for key in ["model", "state_dict"]:
+            if isinstance(state, dict) and key in state:
+                print(f"state['{key}']를 사용합니다.")
+                state = state[key]
+        dtype = None
+        if isinstance(state, dict):
+            tensor_params = [v for v in state.values() if isinstance(v, torch.Tensor)]
+            if tensor_params:
+                first_param = tensor_params[0]
+                dtype = first_param.dtype
+                print(f"state_dict, dtype: {dtype}")
+            else:
+                print("[ERROR] state_dict에 tensor 파라미터가 없습니다!")
+                print(f"state keys: {list(state.keys())}")
+                return
+            finetuned_model.model.load_state_dict(state)
+            if dtype == torch.float16 and device.type == "cuda":
+                finetuned_model.model = finetuned_model.model.half()
+        elif isinstance(state, torch.nn.Module):
+            params = list(state.parameters())
+            if params:
+                dtype = params[0].dtype
+                print(f"전체 모델 객체, dtype: {dtype}")
+            else:
+                print("[ERROR] 모델 객체에 파라미터가 없습니다!")
+                return
+            finetuned_model.model = state
+        else:
+            print("[ERROR] 지원하지 않는 모델 형식입니다!")
+            return
+        finetuned_model.model.to(device)
+        finetuned_model.model.eval()
+        loaded_model = fp16_path
     else:
-        print("No finetuned directories found in ./outputs/, falling back to old path")
-        model_paths = [
-            "../outputs/model.pt",
-            "../outputs/model.pt.best"
-        ]
-    loaded_model = None
-    for finetuned_path in model_paths:
-        if os.path.exists(finetuned_path):
-            try:
-                print(f"Loading model from: {finetuned_path}")
-                state = torch.load(finetuned_path, map_location=device)
-                if isinstance(state, dict) and 'state_dict' in state:
-                    finetuned_model.model.load_state_dict(state['state_dict'])
-                    loaded_model = finetuned_path
-                    if 'training_stats' in state:
-                        stats = state['training_stats']
-                        print(f"  - Steps: {stats.get('step', 'N/A')}")
-                        print(f"  - Samples: {stats.get('total_samples', 'N/A')}")
-                        if 'losses' in stats and len(stats['losses']) > 0:
-                            print(f"  - Final loss: {stats['losses'][-1]:.4f}")
-                    break
-                else:
-                    # state_dict가 아니라 전체 모델이 저장된 경우
-                    # dict가 아닌 실제 모델 객체인지 확인
-                    if hasattr(state, 'eval') and hasattr(state, 'to'):
-                        finetuned_model.model = state
-                        loaded_model = finetuned_path
-                        print("  - Loaded entire model object (not state_dict)")
-                        break
-                    else:
-                        print(f"  - Invalid model format in {finetuned_path}")
-                        continue
-            except Exception as e:
-                print(f"Failed to load {finetuned_path}: {e}")
-                continue
-    if loaded_model is None:
-        print("[ERROR] 사용 가능한 학습된 모델이 없습니다!")
+        print("[ERROR] fp16 모델 파일이 없습니다!")
         return
-    print(f"Successfully loaded: {loaded_model}")
 
     base_model.model.to(device)
     base_model.model.eval()
