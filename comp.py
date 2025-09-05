@@ -4,7 +4,7 @@
 
 import os
 import torch
-import torch.quantization as quant
+from torch.ao.quantization import quantize_dynamic
 import argparse
 from pathlib import Path
 from funasr import AutoModel
@@ -47,7 +47,7 @@ def compress_int8(model, output_path, selective=True):
     print(f"Compressing to INT8 ({mode})...")
     
     layers = {torch.nn.Linear} if selective else {torch.nn.Linear, torch.nn.Conv1d}
-    quantized = quant.quantize_dynamic(model.cpu().model, layers, dtype=torch.qint8)
+    quantized = quantize_dynamic(model.model.cpu(), layers, dtype=torch.qint8)
     
     torch.save(quantized, output_path)
     print(f"✓ Saved: {output_path}")
