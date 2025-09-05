@@ -37,8 +37,9 @@ def compress_fp16(model, output_path):
     """Float16 압축"""
     print("Compressing to Float16...")
     model_fp16 = model.model.half()
-    torch.save(model_fp16.state_dict(), output_path)
-    print(f"✓ Saved: {output_path}")
+    # 전체 모델 객체로 저장
+    torch.save(model_fp16, output_path)
+    print(f"✓ Saved: {output_path} (전체 모델 객체)")
     return model_fp16
 
 def compress_int8(model, output_path, selective=True):
@@ -57,7 +58,7 @@ def main():
     parser = argparse.ArgumentParser(description="Compress FunASR model")
     parser.add_argument("--model_path", default="./outputs/model.pt", help="Model path")
     parser.add_argument("--method", default="all", choices=["fp16", "int8", "all", "benchmark"], help="Compression method")
-    parser.add_argument("--output_dir", default="./compressed", help="Output directory")
+    parser.add_argument("--output_dir", default="./quantized", help="Output directory")
     parser.add_argument("--device", default="cpu", help="Device")
     
     args = parser.parse_args()
