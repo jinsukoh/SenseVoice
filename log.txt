@@ -1,0 +1,1262 @@
+[2025-09-05 11:57:36,082][root][INFO] - download models from model hub: ms
+Downloading Model from https://www.modelscope.cn to directory: /giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall
+[2025-09-05 11:57:39,336][root][WARNING] - trust_remote_code: True
+Loading remote code successfully: model
+
+tables: 
+
+-----------    ** dataset_classes **    --------------
+| register name            | class name               | class location                                              |
+| AudioDataset             | AudioDataset             | funasr/datasets/audio_datasets/datasets.py:9                |
+| AudioDatasetHotword      | AudioDatasetHotword      | funasr/datasets/audio_datasets/datasets.py:121              |
+| AudioLLMARDataset        | AudioLLMARDataset        | funasr/datasets/llm_datasets/datasets.py:302                |
+| AudioLLMDataset          | AudioLLMDataset          | funasr/datasets/llm_datasets/datasets.py:167                |
+| AudioLLMNARDataset       | AudioLLMNARDataset       | funasr/datasets/llm_datasets/datasets.py:8                  |
+| AudioLLMQwenAudioDataset | AudioLLMQwenAudioDataset | funasr/datasets/llm_datasets_qwenaudio/datasets.py:8        |
+| AudioLLMVicunaDataset    | AudioLLMVicunaDataset    | funasr/datasets/llm_datasets_vicuna/datasets.py:8           |
+| KwsMTDataset             | KwsMTDataset             | funasr/datasets/kws_datasets/datasets.py:9                  |
+| OpenAIDataset            | OpenAIDataset            | funasr/datasets/openai_datasets/datasets.py:10              |
+| OpenAIDatasetMultiTurn   | OpenAIDatasetMultiTurn   | funasr/datasets/openai_datasets/datasets.py:232             |
+| SenseVoiceCTCDataset     | SenseVoiceCTCDataset     | funasr/datasets/sense_voice_datasets/datasets_backup.py:234 |
+| SenseVoiceDataset        | SenseVoiceDataset        | funasr/datasets/sense_voice_datasets/datasets_backup.py:11  |
+-----------    ** batch_sampler_classes **    --------------
+| register name                           | class name                       | class location                                       |
+| BatchSampler                            | CustomDistributedBatchSampler_fn | funasr/datasets/audio_datasets/samplers.py:14        |
+| CustomDistributedBatchSampler           | CustomDistributedBatchSampler_fn | funasr/datasets/audio_datasets/samplers.py:14        |
+| CustomDistributedDynamicBatchSampler    | CustomDistributedBatchSampler_fn | funasr/datasets/audio_datasets/samplers.py:14        |
+| DynamicBatchLocalShuffleSampler         | CustomDistributedBatchSampler_fn | funasr/datasets/audio_datasets/samplers.py:14        |
+| EspnetStyleBatchSampler                 | EspnetStyleBatchSampler_fn       | funasr/datasets/audio_datasets/espnet_samplers.py:13 |
+| RankFullLocalShuffleBatchSampler        | CustomDistributedBatchSampler_fn | funasr/datasets/audio_datasets/samplers.py:14        |
+| RankFullLocalShuffleDynamicBatchSampler | CustomDistributedBatchSampler_fn | funasr/datasets/audio_datasets/samplers.py:14        |
+-----------    ** index_ds_classes **    --------------
+| register name         | class name           | class location                                       |
+| IndexDSJsonl          | IndexDSJsonlRankFull | funasr/datasets/audio_datasets/index_ds_backup.py:13 |
+| IndexDSJsonlRankFull  | IndexDSJsonlRankFull | funasr/datasets/audio_datasets/index_ds_backup.py:13 |
+| IndexDSJsonlRankSplit | IndexDSJsonlRankFull | funasr/datasets/audio_datasets/index_ds_backup.py:13 |
+| OpenAIIndexDSJsonl    | OpenAIIndexDSJsonl   | funasr/datasets/openai_datasets/index_ds.py:13       |
+-----------    ** preprocessor_classes **    --------------
+| register name                   | class name                      | class location                                    |
+| SpeechPreprocessSpeedPerturb    | SpeechPreprocessSpeedPerturb    | funasr/datasets/audio_datasets/preprocessor.py:18 |
+| TextPreprocessRemovePunctuation | TextPreprocessRemovePunctuation | funasr/datasets/llm_datasets/preprocessor.py:19   |
+| TextPreprocessSegDict           | TextPreprocessSegDict           | funasr/datasets/audio_datasets/preprocessor.py:39 |
+-----------    ** dataloader_classes **    --------------
+| register name      | class name         | class location                          |
+| DataloaderIterable | DataloaderIterable | funasr/datasets/dataloader_entry.py:120 |
+| DataloaderMapStyle | DataloaderMapStyle | funasr/datasets/dataloader_entry.py:47  |
+-----------    ** frontend_classes **    --------------
+| register name     | class name        | class location                          |
+| DefaultFrontend   | DefaultFrontend   | funasr/frontends/default.py:22          |
+| EspnetFrontend    | DefaultFrontend   | funasr/frontends/default.py:22          |
+| WavFrontend       | WavFrontend       | funasr/frontends/wav_frontend.py:77     |
+| WavFrontendOnline | WavFrontendOnline | funasr/frontends/wav_frontend.py:211    |
+| WhisperFrontend   | WhisperFrontend   | funasr/frontends/whisper_frontend.py:10 |
+| wav_frontend      | WavFrontend       | funasr/frontends/wav_frontend.py:77     |
+-----------    ** joint_network_classes **    --------------
+| register name | class name   | class location                               |
+| joint_network | JointNetwork | funasr/models/transducer/joint_network.py:12 |
+-----------    ** model_classes **    --------------
+| register name          | class name             | class location                                            |
+| BAT                    | BAT                    | funasr/models/bat/model.py:35                             |
+| BiCifParaformer        | BiCifParaformer        | funasr/models/bicif_paraformer/model.py:37                |
+| Branchformer           | Branchformer           | funasr/models/branchformer/model.py:7                     |
+| CAMPPlus               | CAMPPlus               | funasr/models/campplus/model.py:37                        |
+| CTC                    | Transformer            | funasr/models/ctc/model.py:17                             |
+| CTTransformer          | CTTransformer          | funasr/models/ct_transformer/model.py:34                  |
+| CTTransformerStreaming | CTTransformerStreaming | funasr/models/ct_transformer_streaming/model.py:27        |
+| Conformer              | Conformer              | funasr/models/conformer_rwkv/model.py:9                   |
+| ContextualParaformer   | ContextualParaformer   | funasr/models/contextual_paraformer/model.py:40           |
+| EBranchformer          | EBranchformer          | funasr/models/e_branchformer/model.py:7                   |
+| Emotion2vec            | Emotion2vec            | funasr/models/emotion2vec/model.py:34                     |
+| FsmnKWS                | FsmnKWS                | funasr/models/fsmn_kws/model.py:26                        |
+| FsmnKWSConvert         | FsmnKWSConvert         | funasr/models/fsmn_kws/model.py:240                       |
+| FsmnKWSMT              | FsmnKWSMT              | funasr/models/fsmn_kws_mt/model.py:26                     |
+| FsmnKWSMTConvert       | FsmnKWSMTConvert       | funasr/models/fsmn_kws_mt/model.py:302                    |
+| FsmnVADStreaming       | FsmnVADStreaming       | funasr/models/fsmn_vad_streaming/model.py:280             |
+| LCBNet                 | LCBNet                 | funasr/models/lcbnet/model.py:27                          |
+| LLMASR                 | LLMASR                 | funasr/models/llm_asr/model.py:27                         |
+| LLMASR2                | LLMASR2                | funasr/models/llm_asr/model.py:348                        |
+| LLMASR3                | LLMASR3                | funasr/models/llm_asr/model.py:829                        |
+| LLMASR4                | LLMASR4                | funasr/models/llm_asr/model.py:847                        |
+| LLMASRNAR              | LLMASRNAR              | funasr/models/llm_asr_nar/model.py:25                     |
+| LLMASRNARPrompt        | LLMASRNARPrompt        | funasr/models/llm_asr_nar/model.py:370                    |
+| MonotonicAligner       | MonotonicAligner       | funasr/models/monotonic_aligner/model.py:24               |
+| OpenAIWhisperLIDModel  | OpenAIWhisperLIDModel  | funasr/models/whisper_lid/model.py:457                    |
+| OpenAIWhisperModel     | OpenAIWhisperModel     | funasr/models/whisper_lid/model.py:21                     |
+| Paraformer             | Paraformer             | funasr/models/paraformer/model.py:29                      |
+| ParaformerStreaming    | ParaformerStreaming    | funasr/models/paraformer_streaming/model.py:37            |
+| SANM                   | SANM                   | funasr/models/sanm/model.py:14                            |
+| SCAMA                  | SCAMA                  | funasr/models/scama/model.py:39                           |
+| SanmKWS                | SanmKWS                | funasr/models/sanm_kws/model.py:27                        |
+| SanmKWSStreaming       | SanmKWSStreaming       | funasr/models/sanm_kws_streaming/model.py:37              |
+| SeacoParaformer        | SeacoParaformer        | funasr/models/seaco_paraformer/model.py:44                |
+| SenseVoiceSmall        | SenseVoiceSmall        | /giant-data/user/1112307/finetune/SenseVoice/model.py:580 |
+| Transducer             | Transducer             | funasr/models/transducer/model.py:34                      |
+| Transformer            | Transformer            | funasr/models/transformer/model.py:22                     |
+| UniASR                 | UniASR                 | funasr/models/uniasr/model.py:26                          |
+-----------    ** predictor_classes **    --------------
+| register name        | class name           | class location                                      |
+| CifPredictor         | CifPredictor         | funasr/models/paraformer/cif_predictor.py:16        |
+| CifPredictorV2       | CifPredictorV2       | funasr/models/paraformer/cif_predictor.py:172       |
+| CifPredictorV2Export | CifPredictorV2Export | funasr/models/paraformer/cif_predictor.py:430       |
+| CifPredictorV3       | CifPredictorV3       | funasr/models/bicif_paraformer/cif_predictor.py:96  |
+| CifPredictorV3Export | CifPredictorV3Export | funasr/models/bicif_paraformer/cif_predictor.py:374 |
+| PifPredictor         | PifPredictor         | funasr/models/e_paraformer/pif_predictor.py:17      |
+-----------    ** encoder_classes **    --------------
+| register name             | class name             | class location                                            |
+| BranchformerEncoder       | BranchformerEncoder    | funasr/models/branchformer/encoder.py:278                 |
+| ChunkConformerEncoder     | ConformerChunkEncoder  | funasr/models/conformer/encoder.py:884                    |
+| ConformerEncoder          | ConformerEncoder       | funasr/models/conformer/encoder.py:286                    |
+| ConvBiasPredictor         | ConvPredictor          | funasr/models/lcbnet/encoder.py:357                       |
+| EBranchformerEncoder      | EBranchformerEncoder   | funasr/models/e_branchformer/encoder.py:179               |
+| FSMN                      | FSMN                   | funasr/models/fsmn_vad_streaming/encoder.py:199           |
+| FSMNConvert               | FSMNConvert            | funasr/models/fsmn_kws/encoder.py:422                     |
+| FSMNExport                | FSMNExport             | funasr/models/fsmn_vad_streaming/encoder.py:274           |
+| FSMNMT                    | FSMNMT                 | funasr/models/fsmn_kws_mt/encoder.py:27                   |
+| FSMNMTConvert             | FSMNMTConvert          | funasr/models/fsmn_kws_mt/encoder.py:106                  |
+| FusionSANEncoder          | SelfSrcAttention       | funasr/models/lcbnet/encoder.py:228                       |
+| QwenAudioEncoder          | QwenAudioEncoder       | funasr/models/qwen_audio/audio.py:333                     |
+| RWKVEncoder               | RWKVEncoder            | funasr/models/rwkv_bat/rwkv_encoder.py:16                 |
+| SANMEncoder               | SANMEncoder            | funasr/models/sanm/encoder.py:187                         |
+| SANMEncoderChunkOpt       | SANMEncoderChunkOpt    | funasr/models/scama/encoder.py:187                        |
+| SANMEncoderChunkOptExport | SANMEncoderExport      | funasr/models/sanm/encoder.py:516                         |
+| SANMEncoderExport         | SANMEncoderExport      | funasr/models/sanm/encoder.py:516                         |
+| SANMVadEncoder            | SANMVadEncoder         | funasr/models/ct_transformer_streaming/encoder.py:174     |
+| SANMVadEncoderExport      | SANMVadEncoderExport   | funasr/models/ct_transformer_streaming/encoder.py:436     |
+| SenseVoiceEncoderSmall    | SenseVoiceEncoderSmall | /giant-data/user/1112307/finetune/SenseVoice/model.py:437 |
+| TransformerEncoder        | TransformerEncoder     | funasr/models/transformer/encoder.py:139                  |
+| TransformerTextEncoder    | TransformerTextEncoder | funasr/models/lcbnet/encoder.py:130                       |
+-----------    ** decoder_classes **    --------------
+| register name                              | class name                                 | class location                                     |
+| ContextualParaformerDecoder                | ContextualParaformerDecoder                | funasr/models/contextual_paraformer/decoder.py:114 |
+| ContextualParaformerDecoderExport          | ContextualParaformerDecoderExport          | funasr/models/contextual_paraformer/decoder.py:315 |
+| DynamicConvolution2DTransformerDecoder     | DynamicConvolution2DTransformerDecoder     | funasr/models/sa_asr/transformer_decoder.py:674    |
+| DynamicConvolutionTransformerDecoder       | DynamicConvolutionTransformerDecoder       | funasr/models/sa_asr/transformer_decoder.py:614    |
+| FsmnDecoder                                | FsmnDecoder                                | funasr/models/sanm/decoder.py:203                  |
+| FsmnDecoderSCAMAOpt                        | FsmnDecoderSCAMAOpt                        | funasr/models/scama/decoder.py:203                 |
+| LightweightConvolution2DTransformerDecoder | LightweightConvolution2DTransformerDecoder | funasr/models/sa_asr/transformer_decoder.py:554    |
+| LightweightConvolutionTransformerDecoder   | LightweightConvolutionTransformerDecoder   | funasr/models/sa_asr/transformer_decoder.py:494    |
+| ParaformerDecoderSAN                       | ParaformerDecoderSAN                       | funasr/models/sa_asr/transformer_decoder.py:388    |
+| ParaformerDecoderSANExport                 | ParaformerDecoderSANExport                 | funasr/models/e_paraformer/decoder.py:1087         |
+| ParaformerSANDecoder                       | ParaformerSANDecoder                       | funasr/models/e_paraformer/decoder.py:981          |
+| ParaformerSANMDecoder                      | ParaformerSANMDecoder                      | funasr/models/e_paraformer/decoder.py:224          |
+| ParaformerSANMDecoderExport                | ParaformerSANMDecoderExport                | funasr/models/e_paraformer/decoder.py:640          |
+| ParaformerSANMDecoderOnlineExport          | ParaformerSANMDecoderOnlineExport          | funasr/models/e_paraformer/decoder.py:829          |
+| TransformerDecoder                         | TransformerDecoder                         | funasr/models/sa_asr/transformer_decoder.py:343    |
+| TransformerRWKVDecoder                     | TransformerRWKVDecoder                     | funasr/models/conformer_rwkv/decoder.py:378        |
+| rnn_decoder                                | RNNDecoder                                 | funasr/models/transducer/rnn_decoder.py:85         |
+| rnnt_decoder                               | RNNTDecoder                                | funasr/models/transducer/rnnt_decoder.py:14        |
+-----------    ** adaptor_classes **    --------------
+| register name | class name              | class location                         |
+| Linear        | Linear                  | funasr/models/llm_asr_nar/adaptor.py:7 |
+| QFormer       | EncoderProjectorQFormer | funasr/models/llm_asr/adaptor.py:35    |
+| Transformer   | Transformer             | funasr/models/llm_asr/adaptor.py:92    |
+-----------    ** normalize_classes **    --------------
+| register name | class name   | class location                             |
+| GlobalMVN     | GlobalMVN    | funasr/models/normalize/global_mvn.py:12   |
+| UtteranceMVN  | UtteranceMVN | funasr/models/normalize/utterance_mvn.py:9 |
+-----------    ** specaug_classes **    --------------
+| register name | class name | class location                       |
+| SpecAug       | SpecAug    | funasr/models/specaug/specaug.py:16  |
+| SpecAugLFR    | SpecAugLFR | funasr/models/specaug/specaug.py:105 |
+-----------    ** lid_predictor_classes **    --------------
+| register name | class name   | class location                               |
+| LidPredictor  | LidPredictor | funasr/models/whisper_lid/lid_predictor.py:9 |
+-----------    ** tokenizer_classes **    --------------
+| register name           | class name              | class location                                 |
+| CharTokenizer           | CharTokenizer           | funasr/tokenizer/char_tokenizer.py:12          |
+| HuggingfaceTokenizer    | HuggingfaceTokenizer    | funasr/tokenizer/hf_tokenizer.py:4             |
+| SenseVoiceTokenizer     | SenseVoiceTokenizer     | funasr/tokenizer/whisper_tokenizer.py:25       |
+| SentencepiecesTokenizer | SentencepiecesTokenizer | funasr/tokenizer/sentencepiece_tokenizer.py:12 |
+| WhisperTokenizer        | WhisperTokenizer        | funasr/tokenizer/whisper_tokenizer.py:4        |
+
+
+[2025-09-05 11:57:39,375][root][INFO] - Build model, frontend, tokenizer
+funasr version: 1.2.7.
+Check update of funasr, and it would cost few times. You may disable it by set `disable_update=True` in AutoModel
+You are using the latest version of funasr-1.2.7
+[2025-09-05 11:57:41,539][root][INFO] - Loading pretrained params from /giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall/model.pt
+[2025-09-05 11:57:41,671][root][INFO] - ckpt: /giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall/model.pt
+[2025-09-05 11:57:42,492][root][INFO] - scope_map: ['module.', 'None']
+[2025-09-05 11:57:42,492][root][INFO] - excludes: None
+[2025-09-05 11:57:42,575][root][INFO] - Loading ckpt: /giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall/model.pt, status: <All keys matched successfully>
+[2025-09-05 11:57:42,610][root][INFO] - kwargs: {'encoder': 'SenseVoiceEncoderSmall', 'encoder_conf': {'output_size': 512, 'attention_heads': 4, 'linear_units': 2048, 'num_blocks': 50, 'tp_blocks': 20, 'dropout_rate': 0.1, 'positional_dropout_rate': 0.1, 'attention_dropout_rate': 0.1, 'input_layer': 'pe', 'pos_enc_class': 'SinusoidalPositionEncoder', 'normalize_before': True, 'kernel_size': 11, 'sanm_shfit': 0, 'selfattention_layer_type': 'sanm'}, 'model': 'SenseVoiceSmall', 'model_conf': {'length_normalized_loss': True, 'sos': 1, 'eos': 2, 'ignore_id': -1}, 'tokenizer': 'SentencepiecesTokenizer', 'tokenizer_conf': {'bpemodel': '/giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall/chn_jpn_yue_eng_ko_spectok.bpe.model', 'unk_symbol': '<unk>', 'split_with_space': True}, 'frontend': 'WavFrontend', 'frontend_conf': {'fs': 16000, 'window': 'hamming', 'n_mels': 80, 'frame_length': 25, 'frame_shift': 10, 'lfr_m': 7, 'lfr_n': 6, 'cmvn_file': '/giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall/am.mvn'}, 'dataset': 'SenseVoiceCTCDataset', 'dataset_conf': {'index_ds': 'IndexDSJsonl', 'batch_sampler': 'BatchSampler', 'data_split_num': 1, 'batch_type': 'token', 'batch_size': 500, 'max_token_length': 2000, 'min_token_length': 60, 'max_source_length': 2000, 'min_source_length': 60, 'max_target_length': 200, 'min_target_length': 0, 'shuffle': True, 'num_workers': 16, 'sos': 1, 'eos': 2, 'IndexDSJsonl': 'IndexDSJsonl', 'retry': 20, 'sort_size': 100, 'debug': True}, 'train_conf': {'accum_grad': 1, 'grad_clip': 5.0, 'max_epoch': 3, 'keep_nbest_models': 5, 'avg_nbest_model': 5, 'log_interval': 1, 'resume': False, 'validate_interval': 800, 'save_checkpoint_interval': 800, 'use_deepspeed': False, 'use_amp': True, 'patience': 3, 'log_level': 'DEBUG', 'print_model': True, 'print_train_info': True}, 'optim': 'adamw', 'optim_conf': {'lr': 8e-05, 'weight_decay': 0.01}, 'scheduler': 'warmuplr', 'scheduler_conf': {'warmup_steps': 25000}, 'specaug': 'SpecAugLFR', 'specaug_conf': {'apply_time_warp': False, 'time_warp_window': 5, 'time_warp_mode': 'bicubic', 'apply_freq_mask': True, 'freq_mask_width_range': [0, 30], 'lfr_rate': 6, 'num_freq_mask': 1, 'apply_time_mask': True, 'time_mask_width_range': [0, 12], 'num_time_mask': 1}, 'init_param': '/giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall/model.pt', 'config': '/giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall/config.yaml', 'is_training': True, 'trust_remote_code': True, 'train_data_set_list': '/giant-data/user/1112307/finetune/SenseVoice/train_data/data-augmented/train_data.jsonl', 'valid_data_set_list': '/giant-data/user/1112307/finetune/SenseVoice/train_data/data-augmented/valid_data.jsonl', 'output_dir': './outputs', 'model_path': '/giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall', 'device': 'cpu'}
+[2025-09-05 11:57:42,610][root][INFO] - config.yaml is saved to: ./outputs/config.yaml
+name: encoder.encoders0.0.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders0.0.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders0.0.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 560]), numel: 860160
+name: encoder.encoders0.0.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders0.0.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders0.0.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders0.0.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders0.0.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders0.0.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders0.0.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([560]), numel: 560
+name: encoder.encoders0.0.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([560]), numel: 560
+name: encoder.encoders0.0.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders0.0.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.0.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.0.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.0.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.0.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.0.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.0.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.0.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.0.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.0.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.0.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.0.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.0.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.0.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.1.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.1.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.1.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.1.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.1.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.1.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.1.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.1.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.1.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.1.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.1.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.1.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.1.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.2.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.2.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.2.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.2.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.2.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.2.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.2.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.2.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.2.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.2.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.2.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.2.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.2.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.3.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.3.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.3.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.3.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.3.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.3.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.3.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.3.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.3.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.3.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.3.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.3.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.3.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.4.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.4.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.4.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.4.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.4.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.4.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.4.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.4.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.4.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.4.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.4.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.4.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.4.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.5.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.5.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.5.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.5.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.5.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.5.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.5.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.5.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.5.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.5.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.5.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.5.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.5.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.6.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.6.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.6.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.6.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.6.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.6.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.6.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.6.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.6.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.6.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.6.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.6.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.6.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.7.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.7.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.7.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.7.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.7.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.7.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.7.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.7.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.7.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.7.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.7.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.7.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.7.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.8.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.8.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.8.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.8.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.8.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.8.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.8.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.8.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.8.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.8.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.8.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.8.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.8.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.9.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.9.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.9.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.9.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.9.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.9.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.9.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.9.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.9.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.9.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.9.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.9.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.9.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.10.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.10.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.10.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.10.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.10.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.10.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.10.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.10.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.10.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.10.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.10.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.10.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.10.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.11.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.11.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.11.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.11.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.11.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.11.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.11.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.11.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.11.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.11.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.11.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.11.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.11.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.12.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.12.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.12.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.12.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.12.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.12.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.12.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.12.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.12.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.12.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.12.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.12.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.12.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.13.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.13.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.13.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.13.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.13.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.13.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.13.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.13.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.13.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.13.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.13.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.13.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.13.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.14.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.14.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.14.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.14.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.14.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.14.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.14.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.14.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.14.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.14.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.14.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.14.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.14.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.15.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.15.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.15.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.15.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.15.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.15.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.15.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.15.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.15.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.15.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.15.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.15.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.15.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.16.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.16.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.16.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.16.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.16.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.16.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.16.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.16.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.16.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.16.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.16.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.16.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.16.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.17.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.17.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.17.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.17.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.17.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.17.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.17.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.17.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.17.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.17.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.17.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.17.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.17.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.18.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.18.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.18.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.18.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.18.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.18.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.18.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.18.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.18.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.18.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.18.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.18.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.18.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.19.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.19.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.19.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.19.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.19.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.19.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.19.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.19.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.19.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.19.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.19.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.19.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.19.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.20.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.20.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.20.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.20.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.20.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.20.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.20.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.20.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.20.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.20.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.20.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.20.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.20.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.21.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.21.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.21.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.21.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.21.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.21.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.21.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.21.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.21.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.21.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.21.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.21.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.21.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.22.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.22.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.22.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.22.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.22.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.22.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.22.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.22.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.22.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.22.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.22.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.22.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.22.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.23.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.23.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.23.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.23.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.23.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.23.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.23.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.23.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.23.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.23.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.23.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.23.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.23.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.24.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.24.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.24.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.24.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.24.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.24.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.24.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.24.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.24.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.24.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.24.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.24.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.24.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.25.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.25.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.25.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.25.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.25.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.25.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.25.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.25.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.25.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.25.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.25.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.25.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.25.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.26.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.26.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.26.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.26.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.26.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.26.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.26.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.26.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.26.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.26.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.26.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.26.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.26.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.27.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.27.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.27.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.27.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.27.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.27.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.27.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.27.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.27.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.27.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.27.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.27.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.27.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.28.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.28.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.28.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.28.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.28.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.28.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.28.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.28.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.28.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.28.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.28.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.28.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.28.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.29.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.29.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.29.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.29.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.29.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.29.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.29.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.29.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.29.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.29.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.29.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.29.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.29.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.30.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.30.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.30.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.30.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.30.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.30.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.30.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.30.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.30.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.30.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.30.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.30.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.30.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.31.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.31.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.31.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.31.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.31.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.31.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.31.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.31.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.31.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.31.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.31.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.31.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.31.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.32.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.32.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.32.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.32.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.32.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.32.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.32.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.32.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.32.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.32.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.32.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.32.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.32.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.33.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.33.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.33.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.33.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.33.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.33.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.33.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.33.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.33.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.33.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.33.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.33.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.33.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.34.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.34.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.34.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.34.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.34.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.34.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.34.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.34.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.34.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.34.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.34.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.34.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.34.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.35.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.35.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.35.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.35.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.35.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.35.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.35.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.35.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.35.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.35.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.35.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.35.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.35.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.36.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.36.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.36.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.36.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.36.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.36.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.36.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.36.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.36.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.36.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.36.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.36.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.36.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.37.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.37.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.37.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.37.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.37.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.37.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.37.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.37.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.37.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.37.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.37.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.37.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.37.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.38.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.38.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.38.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.38.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.38.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.38.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.38.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.38.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.38.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.38.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.38.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.38.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.38.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.39.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.39.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.39.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.39.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.39.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.39.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.39.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.39.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.39.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.39.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.39.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.39.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.39.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.40.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.40.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.40.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.40.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.40.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.40.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.40.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.40.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.40.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.40.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.40.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.40.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.40.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.41.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.41.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.41.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.41.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.41.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.41.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.41.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.41.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.41.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.41.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.41.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.41.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.41.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.42.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.42.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.42.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.42.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.42.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.42.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.42.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.42.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.42.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.42.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.42.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.42.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.42.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.43.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.43.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.43.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.43.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.43.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.43.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.43.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.43.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.43.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.43.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.43.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.43.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.43.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.44.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.44.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.44.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.44.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.44.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.44.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.44.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.44.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.44.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.44.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.44.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.44.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.44.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.45.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.45.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.45.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.45.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.45.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.45.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.45.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.45.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.45.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.45.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.45.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.45.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.45.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.46.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.46.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.46.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.46.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.46.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.46.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.46.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.46.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.46.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.46.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.46.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.46.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.46.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.47.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.47.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.47.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.47.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.47.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.47.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.47.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.47.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.47.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.47.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.47.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.47.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.47.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.48.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.encoders.48.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.48.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.encoders.48.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.encoders.48.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.encoders.48.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.encoders.48.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.encoders.48.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.encoders.48.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.48.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.48.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.48.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.encoders.48.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.0.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.0.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.0.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.0.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.0.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.0.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.0.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.0.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.0.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.0.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.0.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.0.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.0.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.1.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.1.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.1.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.1.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.1.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.1.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.1.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.1.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.1.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.1.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.1.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.1.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.1.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.2.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.2.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.2.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.2.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.2.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.2.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.2.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.2.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.2.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.2.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.2.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.2.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.2.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.3.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.3.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.3.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.3.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.3.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.3.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.3.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.3.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.3.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.3.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.3.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.3.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.3.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.4.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.4.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.4.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.4.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.4.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.4.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.4.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.4.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.4.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.4.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.4.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.4.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.4.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.5.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.5.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.5.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.5.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.5.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.5.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.5.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.5.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.5.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.5.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.5.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.5.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.5.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.6.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.6.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.6.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.6.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.6.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.6.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.6.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.6.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.6.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.6.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.6.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.6.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.6.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.7.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.7.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.7.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.7.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.7.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.7.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.7.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.7.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.7.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.7.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.7.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.7.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.7.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.8.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.8.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.8.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.8.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.8.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.8.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.8.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.8.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.8.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.8.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.8.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.8.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.8.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.9.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.9.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.9.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.9.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.9.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.9.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.9.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.9.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.9.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.9.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.9.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.9.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.9.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.10.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.10.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.10.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.10.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.10.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.10.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.10.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.10.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.10.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.10.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.10.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.10.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.10.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.11.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.11.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.11.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.11.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.11.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.11.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.11.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.11.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.11.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.11.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.11.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.11.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.11.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.12.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.12.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.12.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.12.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.12.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.12.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.12.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.12.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.12.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.12.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.12.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.12.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.12.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.13.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.13.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.13.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.13.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.13.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.13.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.13.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.13.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.13.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.13.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.13.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.13.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.13.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.14.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.14.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.14.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.14.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.14.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.14.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.14.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.14.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.14.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.14.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.14.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.14.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.14.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.15.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.15.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.15.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.15.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.15.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.15.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.15.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.15.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.15.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.15.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.15.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.15.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.15.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.16.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.16.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.16.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.16.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.16.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.16.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.16.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.16.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.16.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.16.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.16.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.16.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.16.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.17.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.17.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.17.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.17.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.17.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.17.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.17.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.17.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.17.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.17.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.17.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.17.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.17.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.18.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.18.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.18.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.18.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.18.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.18.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.18.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.18.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.18.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.18.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.18.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.18.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.18.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.19.self_attn.linear_out.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 512]), numel: 262144
+name: encoder.tp_encoders.19.self_attn.linear_out.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.19.self_attn.linear_q_k_v.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536, 512]), numel: 786432
+name: encoder.tp_encoders.19.self_attn.linear_q_k_v.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([1536]), numel: 1536
+name: encoder.tp_encoders.19.self_attn.fsmn_block.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 1, 11]), numel: 5632
+name: encoder.tp_encoders.19.feed_forward.w_1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048, 512]), numel: 1048576
+name: encoder.tp_encoders.19.feed_forward.w_1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([2048]), numel: 2048
+name: encoder.tp_encoders.19.feed_forward.w_2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512, 2048]), numel: 1048576
+name: encoder.tp_encoders.19.feed_forward.w_2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.19.norm1.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.19.norm1.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.19.norm2.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_encoders.19.norm2.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.after_norm.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.after_norm.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_norm.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: encoder.tp_norm.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([512]), numel: 512
+name: ctc.ctc_lo.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([25055, 512]), numel: 12828160
+name: ctc.ctc_lo.bias, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([25055]), numel: 25055
+name: embed.weight, dtype: torch.float32, device: cpu, trainable: True, shape: torch.Size([16, 560]), numel: 8960
+[2025-09-05 11:57:42,625][root][INFO] - Model structure:
+SenseVoiceSmall(
+  (specaug): SpecAugLFR(
+    (freq_mask): MaskAlongAxisLFR(mask_width_range=[0, 30], num_mask=1, axis=freq)
+    (time_mask): MaskAlongAxisLFR(mask_width_range=[0, 12], num_mask=1, axis=time)
+  )
+  (encoder): SenseVoiceEncoderSmall(
+    (embed): SinusoidalPositionEncoder()
+    (encoders0): ModuleList(
+      (0): EncoderLayerSANM(
+        (self_attn): MultiHeadedAttentionSANM(
+          (linear_out): Linear(in_features=512, out_features=512, bias=True)
+          (linear_q_k_v): Linear(in_features=560, out_features=1536, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (fsmn_block): Conv1d(512, 512, kernel_size=(11,), stride=(1,), groups=512, bias=False)
+          (pad_fn): ConstantPad1d(padding=(5, 5), value=0.0)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=512, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=512, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): ReLU()
+        )
+        (norm1): LayerNorm((560,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+    )
+    (encoders): ModuleList(
+      (0-48): 49 x EncoderLayerSANM(
+        (self_attn): MultiHeadedAttentionSANM(
+          (linear_out): Linear(in_features=512, out_features=512, bias=True)
+          (linear_q_k_v): Linear(in_features=512, out_features=1536, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (fsmn_block): Conv1d(512, 512, kernel_size=(11,), stride=(1,), groups=512, bias=False)
+          (pad_fn): ConstantPad1d(padding=(5, 5), value=0.0)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=512, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=512, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): ReLU()
+        )
+        (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+    )
+    (tp_encoders): ModuleList(
+      (0-19): 20 x EncoderLayerSANM(
+        (self_attn): MultiHeadedAttentionSANM(
+          (linear_out): Linear(in_features=512, out_features=512, bias=True)
+          (linear_q_k_v): Linear(in_features=512, out_features=1536, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (fsmn_block): Conv1d(512, 512, kernel_size=(11,), stride=(1,), groups=512, bias=False)
+          (pad_fn): ConstantPad1d(padding=(5, 5), value=0.0)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=512, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=512, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (activation): ReLU()
+        )
+        (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+    )
+    (after_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    (tp_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+  )
+  (ctc): CTC(
+    (ctc_lo): Linear(in_features=512, out_features=25055, bias=True)
+    (ctc_loss): CTCLoss()
+  )
+  (embed): Embedding(16, 560)
+  (criterion_att): LabelSmoothingLoss(
+    (criterion): KLDivLoss()
+  )
+)
+
+Model summary:
+    Class Name: SenseVoiceSmall
+    Total Number of model parameters: 234.00 M
+    Number of trainable parameters: 234.00 M (100.0%)
+    Type: torch.float32
+[2025-09-05 11:57:43,550][root][INFO] - Build optim
+[2025-09-05 11:57:43,552][root][INFO] - Build scheduler
+[2025-09-05 11:57:43,553][root][INFO] - Build dataloader
+[2025-09-05 11:57:43,553][root][INFO] - Build dataloader
+[2025-09-05 11:57:43,672][root][INFO] - total_num of samplers: 0, /giant-data/user/1112307/finetune/SenseVoice/train_data/data-augmented/train_data.jsonl
+[2025-09-05 11:57:43,685][root][INFO] - total_num of samplers: 0, /giant-data/user/1112307/finetune/SenseVoice/train_data/data-augmented/valid_data.jsonl
+[2025-09-05 11:57:43,686][root][INFO] - Train epoch: 0, rank: 0
+
+[2025-09-05 11:57:43,690][root][INFO] - rank: 0, dataloader start from step: 0, batch_num: 0, after: 0
+[2025-09-05 11:57:44,798][root][INFO] - rank: 0, dataloader start from step: 0, batch_num: 0, after: 0
+[2025-09-05 11:57:45,054][root][INFO] - 
+
+rank: 0, time_escaped_epoch: 0.000 hours, estimated to finish 1 data_slices, remaining: 1 slices, 0.000 hours, epoch: 3 epochs, 0.001 hours
+
+[2025-09-05 11:57:45,054][root][INFO] - Validate epoch: 1, rank: 0
+
+[2025-09-05 11:57:45,059][root][INFO] - rank: 0, dataloader start from step: 0, batch_num: 0, after: 0
+[2025-09-05 11:57:46,115][root][INFO] - rank: 0, dataloader start from step: 0, batch_num: 0, after: 0
+[2025-09-05 11:57:46,366][root][INFO] - current_val: 0.0, best_val_loss: inf
+[2025-09-05 11:57:46,366][root][INFO] - Save checkpoint: 1, rank: 0, local_rank: 0
+
+[2025-09-05 11:57:48,379][root][INFO] - 
+Checkpoint saved to ./outputs/model.pt.ep1
+
+[2025-09-05 11:57:52,008][root][INFO] - Update best acc: 0.0000, outputs/model.pt.best
+[2025-09-05 11:57:52,017][root][INFO] - 
+
+rank: 0, time_escaped_epoch: 0.002 hours, estimated to finish 3 epoch: 0.007 hours
+
+[2025-09-05 11:57:52,017][root][INFO] - Train epoch: 1, rank: 0
+
+[2025-09-05 11:57:52,022][root][INFO] - rank: 0, dataloader start from step: 0, batch_num: 0, after: 0
+[2025-09-05 11:57:53,074][root][INFO] - rank: 0, dataloader start from step: 0, batch_num: 0, after: 0
+[2025-09-05 11:57:53,363][root][INFO] - 
+
+rank: 0, time_escaped_epoch: 0.000 hours, estimated to finish 1 data_slices, remaining: 1 slices, 0.000 hours, epoch: 2 epochs, 0.001 hours
+
+[2025-09-05 11:57:53,363][root][INFO] - Validate epoch: 2, rank: 0
+
+[2025-09-05 11:57:53,367][root][INFO] - rank: 0, dataloader start from step: 0, batch_num: 0, after: 0
+[2025-09-05 11:57:54,371][root][INFO] - rank: 0, dataloader start from step: 0, batch_num: 0, after: 0
+[2025-09-05 11:57:54,640][root][INFO] - No val_loss improvement for 1/0 epochs
+[2025-09-05 11:57:54,640][root][INFO] - Save checkpoint: 2, rank: 0, local_rank: 0
+
+[2025-09-05 11:57:56,469][root][INFO] - 
+Checkpoint saved to ./outputs/model.pt.ep2
+
+[2025-09-05 11:58:00,164][root][INFO] - Update best acc: 0.0000, outputs/model.pt.best
+[2025-09-05 11:58:00,165][root][INFO] - 
+
+rank: 0, time_escaped_epoch: 0.002 hours, estimated to finish 3 epoch: 0.005 hours
+
+[2025-09-05 11:58:00,165][root][INFO] - Train epoch: 2, rank: 0
+
+[2025-09-05 11:58:00,170][root][INFO] - rank: 0, dataloader start from step: 0, batch_num: 0, after: 0
+[2025-09-05 11:58:01,228][root][INFO] - rank: 0, dataloader start from step: 0, batch_num: 0, after: 0
+[2025-09-05 11:58:01,488][root][INFO] - 
+
+rank: 0, time_escaped_epoch: 0.000 hours, estimated to finish 1 data_slices, remaining: 1 slices, 0.000 hours, epoch: 1 epochs, 0.000 hours
+
+[2025-09-05 11:58:01,488][root][INFO] - Validate epoch: 3, rank: 0
+
+[2025-09-05 11:58:01,493][root][INFO] - rank: 0, dataloader start from step: 0, batch_num: 0, after: 0
+[2025-09-05 11:58:02,516][root][INFO] - rank: 0, dataloader start from step: 0, batch_num: 0, after: 0
+[2025-09-05 11:58:02,771][root][INFO] - No val_loss improvement for 2/0 epochs
+[2025-09-05 11:58:02,771][root][INFO] - Save checkpoint: 3, rank: 0, local_rank: 0
+
+[2025-09-05 11:58:04,767][root][INFO] - 
+Checkpoint saved to ./outputs/model.pt.ep3
+
+[2025-09-05 11:58:08,574][root][INFO] - Update best acc: 0.0000, outputs/model.pt.best
+[2025-09-05 11:58:08,575][root][INFO] - 
+
+rank: 0, time_escaped_epoch: 0.002 hours, estimated to finish 3 epoch: 0.002 hours
+
+average_checkpoints: ['./outputs/model.pt.ep1', './outputs/model.pt.ep2', './outputs/model.pt.ep3']
