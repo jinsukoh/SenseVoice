@@ -58,11 +58,12 @@ ${train_tool} \
 ++valid_data_set_list="${val_data}" \
 ++dataset_conf.data_split_num=1 \
 ++dataset_conf.batch_sampler="BatchSampler" \
-++dataset_conf.batch_size=10000 \
-++dataset_conf.sort_size=2048 \
+++dataset_conf.batch_size=500 \
+++dataset_conf.sort_size=100 \
 ++dataset_conf.batch_type="token" \
 ++dataset_conf.num_workers=16 \
-++train_conf.max_epoch=25 \
+++dataset_conf.min_source_length=0 \
+++train_conf.max_epoch=3 \
 ++train_conf.log_interval=1 \
 ++train_conf.resume=false \
 ++train_conf.validate_interval=800 \

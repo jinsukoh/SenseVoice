@@ -1,0 +1,14 @@
+[2025-09-05 15:58:16,333][INFO] download models from model hub: ms
+[2025-09-05 15:58:19,872][WARNING] trust_remote_code: False
+[2025-09-05 15:58:22,048][INFO] Loading pretrained params from /giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall/model.pt
+[2025-09-05 15:58:22,054][INFO] ckpt: /giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall/model.pt
+[2025-09-05 15:58:22,967][INFO] scope_map: ['module.', 'None']
+[2025-09-05 15:58:22,967][INFO] excludes: None
+[2025-09-05 15:58:23,054][INFO] Loading ckpt: /giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall/model.pt, status: <All keys matched successfully>
+[2025-09-05 15:58:24,529][INFO] download models from model hub: ms
+[2025-09-05 15:58:28,207][WARNING] trust_remote_code: False
+[2025-09-05 15:58:29,892][INFO] Loading pretrained params from /giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall/model.pt
+[2025-09-05 15:58:29,897][INFO] ckpt: /giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall/model.pt
+[2025-09-05 15:58:30,376][INFO] scope_map: ['module.', 'None']
+[2025-09-05 15:58:30,376][INFO] excludes: None
+[2025-09-05 15:58:30,462][INFO] Loading ckpt: /giant-data/user/1112307/.cache/modelscope/hub/models/iic/SenseVoiceSmall/model.pt, status: <All keys matched successfully>
