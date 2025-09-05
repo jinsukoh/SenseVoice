@@ -36,8 +36,8 @@ def load_finetuned_model(model_path, device="cpu"):
 def compress_fp16(model, output_path):
     """Float16 압축"""
     print("Compressing to Float16...")
-    model_fp16 = model.half()
-    torch.save(model_fp16.model.state_dict(), output_path)
+    model_fp16 = model.model.half()
+    torch.save(model_fp16.state_dict(), output_path)
     print(f"✓ Saved: {output_path}")
     return model_fp16
 
